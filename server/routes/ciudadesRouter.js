@@ -1,7 +1,6 @@
 const express = require ('express');
 const router = express.Router();
-const ciudadesController = require ('../controllers/ciudades');
-
+const ciudadesController = require ('../controllers/ciudadesController');
 
 router.get('/ciudades',ciudadesController.getAllCiudades);
 router.get('/ciudades/:id',ciudadesController.getCiudadesById);

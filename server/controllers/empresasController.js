@@ -1,34 +1,32 @@
-
-
-
-
-
 // EMPRESAS
+const connection = require ('../../knexfile')['development'];
+const database = require('knex')(connection);
 
-exports.get('/empresas', (req,res)=>{
+
+exports.getAllEmpresas=(req,res)=>{
     database('empresas').then((empresas)=>{
         res.json(empresas)
     })
-})
+};
 
-exports.get('/empresas/:id', (req,res)=>{
+exports.getEmpresasById=(req,res)=>{
     const {id} = req.params
     database('empresas')
     .where ({ id_empresa: id})
     .then((empresas)=>{
         res.json(empresas)
     })
-})
+};
 
-exports.post('/empresas', (req,res)=>{
+exports.post_Empresas=(req,res)=>{
     const toCreate = req.body
     database('empresas').insert(toCreate)
         .then ((empresas)=>{
             res.json(empresas)
     })
-})
+};
 
-exports.put('/empresas/:id', (req,res)=>{
+exports.put_Empresas=(req,res)=>{
     const {id} = req.params
     const toEdit = req.body
     database('empresas')
@@ -37,9 +35,9 @@ exports.put('/empresas/:id', (req,res)=>{
         .then((empresas)=>{
         res.json(empresas)
     })
-})
+};
 
-exports.delete('empresas/:id', (req,res)=>{
+exports.delete_Empresas=(req,res)=>{
     const {id} = req.params
     database('empresas')
         .where ({id_empresa: id})
@@ -47,4 +45,4 @@ exports.delete('empresas/:id', (req,res)=>{
         .then((empresas)=>{
             res.json(empresas)
     })
-})
+};

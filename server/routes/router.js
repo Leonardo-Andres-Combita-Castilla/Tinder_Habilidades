@@ -2,21 +2,29 @@ const express = require ('express');
 const router = express.Router();
 
 // Ruta Usuarios
-// Ruta Empresas
-// Ruta Habilidades
+const usuariosRouter = require('./usuariosRouter')
+router.use('/',usuariosRouter);
+
+
 // Ruta Paises
+const paisesRouter = require('./paisesRouter')
+router.use('/',paisesRouter);
+
 
 // Ruta Ciudades
 const ciudadesRouter = require('./ciudadesRouter')
-router.use('/',ciudadesRouter)
+router.use('/',ciudadesRouter);
 
+// Ruta Empresas
+const empresasRouter = require('./empresasRouter')
+router.use('/',empresasRouter);
+
+// Ruta Habilidades
+const habilidadesRouter = require('./habilidadesRouter')
+router.use('/',habilidadesRouter);
 
 module.exports = router;
 
-const usuariosController = require ('../controllers/usuarios')
-const empresasController = require ('../controllers/empresas')
-const habilidadesController = require ('../controllers/habilidades')
-const paisesController = require ('../controllers/paises')
 
 
 

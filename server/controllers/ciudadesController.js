@@ -1,9 +1,6 @@
-  
-
-
-
-
 // CIUDADES
+const connection = require ('../../knexfile')['development'];
+const database = require('knex')(connection);
 
 exports.getAllCiudades = (req,res) => {
     database('ciudades').then((ciudades)=>{

@@ -1,34 +1,35 @@
-
+const connection = require ('../../knexfile')['development'];
+const database = require('knex')(connection);
 
 
 
 
 // HABILIDADES
 
-exports.get('/habilidades', (req,res)=>{
+exports.getAllHabilidades = (req,res)=>{
     database('habilidades').then((habilidades)=>{
         res.json(habilidades)
     })
-})
+};
 
-exports.get('/habilidades/:id', (req,res)=>{
+exports.getHabilidadesById=(req,res)=>{
     const {id} = req.params
     database('habilidades')
     .where ({ id_habilidad: id})
     .then((habilidades)=>{
         res.json(habilidades)
     })
-})
+};
 
-exports.post('/habilidades', (req,res)=>{
+exports.post_Habilidades = (req,res)=>{
     const toCreate = req.body
     database('habilidades').insert(toCreate)
         .then ((habilidades)=>{
             res.json(habilidades)
     })
-})
+};
 
-exports.put('/habilidades/:id', (req,res)=>{
+exports.put_Habilidades = (req,res)=>{
     const {id} = req.params
     const toEdit = req.body
     database('habilidades')
@@ -37,9 +38,9 @@ exports.put('/habilidades/:id', (req,res)=>{
         .then((habilidades)=>{
         res.json(habilidades)
     })
-})
+};
 
-exports.delete('/habilidades/:id', (req,res)=>{
+exports.delete_Habilidades = (req,res)=>{
     const {id} = req.params
     database('habilidades')
         .where ({id_habilidad: id})
@@ -47,4 +48,4 @@ exports.delete('/habilidades/:id', (req,res)=>{
         .then((chabilidades)=>{
             res.json(chabilidades)
     })
-})
+};

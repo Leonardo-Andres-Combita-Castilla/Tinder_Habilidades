@@ -1,34 +1,32 @@
-
-
-
-
+const connection = require ('../../knexfile')['development'];
+const database = require('knex')(connection);
 
 // PAISES
 
-exports.get('/paises', (req,res)=>{
+exports.getAllPaises = (req,res)=>{
     database('paises').then((paises)=>{
         res.json(paises)
     })
-})
+};
 
-exports.get('/paises/:id', (req,res)=>{
+exports.getPaisesById = (req,res)=>{
     const {id} = req.params
     database('paises')
     .where ({ id_pais: id})
     .then((paises)=>{
         res.json(paises)
     })
-})
+};
 
-exports.post('/paises', (req,res)=>{
+exports.post_Paises = (req,res)=>{
     const toCreate = req.body
     database('paises').insert(toCreate)
         .then ((paises)=>{
             res.json(paises)
     })
-})
+};
 
-exports.put('/paises/:id', (req,res)=>{
+exports.put_Paises = (req,res)=>{
     const {id} = req.params
     const toEdit = req.body
     database('paises')
@@ -37,9 +35,9 @@ exports.put('/paises/:id', (req,res)=>{
         .then((paises)=>{
         res.json(paises)
     })
-})
+};
 
-exports.delete('/paises/:id', (req,res)=>{
+exports.delete_Paises = (req,res)=>{
     const {id} = req.params
     database('paises')
         .where ({id_pais: id})
@@ -47,4 +45,4 @@ exports.delete('/paises/:id', (req,res)=>{
         .then((cpaises)=>{
             res.json(cpaises)
     })
-})
+};
