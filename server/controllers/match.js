@@ -1,6 +1,0 @@
-
-
-if(habilidadusuario === habilidadempresa){
-    match
-}
-

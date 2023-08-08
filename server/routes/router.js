@@ -23,16 +23,8 @@ router.use('/',empresasRouter);
 const habilidadesRouter = require('./habilidadesRouter')
 router.use('/',habilidadesRouter);
 
+// MATCH
+const matchRouter = require('./matchRouter')
+router.use('/',matchRouter);
+
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
